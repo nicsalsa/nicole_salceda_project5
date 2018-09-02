@@ -2,26 +2,29 @@ import React, { Component } from 'react';
 
 class GroceryItem extends Component {
    render(){
-      console.log(this.props.listOfGroceryItems);
+      // console.log(this.props.listOfGroceryItems);
       return (
-         <ul>
+         <li>
             <h2 className="fridgeInventory">What's in my fridge?</h2>
             {this.props.listOfGroceryItems.map((groceryItem, category) => {
                return (
-                  <li className="groceryItem" key={groceryItem.key} >
+                  <div className="groceryItem" key={groceryItem.key} >
                      <h3>{groceryItem.groceryItem}</h3>
                      <p>category: {groceryItem.category}</p>
                      <p>inventory: {groceryItem.inventory}</p>
-                     <button>
+                     <button onClick={() => this.props.deleteGroceryItem(groceryItem.key)}>
+                        <i className="fas fa-trash-alt"></i>
+                     </button>
+                     <button onClick={() => this.props.updateInventory(groceryItem.key, -1)}>
                         <i className="fas fa-minus"></i>
                      </button>
-                     <button>
+                     <button onClick={() => this.props.updateInventory(groceryItem.key, 1)}>
                         <i className="fas fa-plus"></i>
                      </button>
-                  </li>
+                  </div>
                )
             })}
-         </ul>
+         </li>
       );
    }
 }

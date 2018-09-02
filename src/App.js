@@ -4,7 +4,7 @@ import firebase from './firebase';
 
 //Components
 import Form from './components/form/Form';
-import GroceryItem from './GroceryItem';
+import GroceryItem from './components/groceryItems/GroceryItem';
 
 const dbRef = firebase.database().ref();
 
@@ -17,13 +17,14 @@ class App extends Component {
   }
   componentDidMount() {
     dbRef.on('value', (snapshot) => {
-      console.log(snapshot.val());
-      this.sortGroceryItems(snapshot.val())
-    //   this.setState = ({
-    //     fridgeInventory: snapshot.val(),
-    //   })
-    // })
-    // console.log('app component did mount fired');
+      // console.log(snapshot.val());
+      const data = snapshot.val();
+      this.sortGroceryItems(data);
+      const newState = [];
+      for (let key in data) {
+        newState.push({ key: key, name: data[key] });
+        console.log(newState)
+      }
   
   })
 }
@@ -52,15 +53,27 @@ class App extends Component {
     });
     console.log(groceriesArrays)
   }
-  render() {
+  deleteGroceryItem(groceryId) {
+    const grocerydbRef = firebase.database().ref(`${groceryId}`);
+    grocerydbRef.remove();
+  }
+  updateInventory = (id, number) => {
+    let inventoryNum;
+    const grocerydbRef = firebase.database().ref(`${id}`);
+    grocerydbRef.child('/inventory').on("value", (snapshot) => {
+      inventoryNum = snapshot.val();
+    })
+    grocerydbRef.update({inventory: inventoryNum + number});
+  }
+  render(){
     // console.log('render was called')
     return (
       <div className="App">
         <h1>Grocery List App</h1>
-        <Form addGroceryToDatabase={this.addGroceryToDatabase} />
         <ul>
-          <GroceryItem listOfGroceryItems={this.state.fridgeInventory} />
+          <GroceryItem listOfGroceryItems={this.state.fridgeInventory} deleteGroceryItem={this.deleteGroceryItem} updateInventory={this.updateInventory}/>
         </ul>
+        <Form addGroceryToDatabase={this.addGroceryToDatabase} />
       </div>
     );
   }

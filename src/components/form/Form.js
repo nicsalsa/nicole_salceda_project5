@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 
 class Form extends Component {
    constructor(){
@@ -12,7 +13,9 @@ class Form extends Component {
    handleChange = (e) => {
       this.setState({
          [e.target.id]: e.target.value,
+         
       })
+      console.log(e.target.id)
    }
    handleSubmit = (e) => {
       e.preventDefault();
@@ -32,17 +35,17 @@ class Form extends Component {
             <label htmlFor="category"> to this category </label>
             <select onChange={this.handleChange} name="category" id="category" value={this.state.category}>
                <option value="">--Select a Grocery Category--</option>
-               <option value="fruits" id={this.state.category}>Fruits</option>
-               <option value="veggie" id={this.state.category}>Veggies</option>
-               <option value="dairy" id={this.state.category}>Dairy</option>
-               <option value="grains" id={this.state.category}>Grains</option>
-               <option value="meat" id={this.state.category}>Meat</option>
-               <option value="freezer" id={this.state.category}>Freezer</option>
-               <option value="other" id={this.state.category}>Other</option>
+               <option value="Fruits" id={this.state.category}>Fruits</option>
+               <option value="Veggie" id={this.state.category}>Veggies</option>
+               <option value="Dairy" id={this.state.category}>Dairy</option>
+               <option value="Grains" id={this.state.category}>Grains</option>
+               <option value="Meat" id={this.state.category}>Meat</option>
+               <option value="Freezer" id={this.state.category}>Freezer</option>
+               <option value="Other" id={this.state.category}>Other</option>
             </select>
 
-            <label htmlFor="inventory">Inventory Amount</label>
-            <input onChange={this.handleChange} type="number" placeholder="Enter the quantity" value={this.state.inventory} id="inventory"/>
+            <label htmlFor="inventory">Qty: </label>
+            <input onChange={this.handleChange} type="text" placeholder="Enter the quantity" value={this.state.inventory} id="inventory"/>
 
             
             <input type="submit" value="Update Inventory"/>
