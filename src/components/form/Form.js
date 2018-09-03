@@ -20,7 +20,7 @@ class Form extends Component {
    handleSubmit = (e) => {
       e.preventDefault();
    
-      this.props.addGroceryToDatabase(this.state.groceryItem, this.state.category, this.state.inventory);
+      this.props.addGroceryToDatabase(this.state.groceryItem, this.state.category, parseInt(this.state.inventory));
       this.setState({
          groceryItem: '',
          category: '',

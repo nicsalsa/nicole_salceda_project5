@@ -1,5 +1,11 @@
 .App {
-  text-align: center;
+  text-align: left;
+  font-family: 'Noto Sans', sans-serif;
+  height: 100vh;
+}
+li {
+  list-style-type: none;
+  padding: 1rem;
 }
 
 .App-logo {
@@ -22,7 +28,13 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+.fridgeList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: row;
 }

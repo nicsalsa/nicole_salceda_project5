@@ -37,6 +37,9 @@ class App extends Component {
     // console.log(book, author);
   }
   sortGroceryItems = (groceryItemObject) => {
+    if (groceryItemObject === null)  {
+      groceryItemObject = {};
+    }
     // we need to transform our object into an array to easily map through it.
     // object.entries is an object method that turns an object into an array of arrays
     const groceriesArrays = Object.entries(groceryItemObject)
@@ -70,7 +73,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Grocery List App</h1>
-        <ul>
+        <ul className="fridgeList">
           <GroceryItem listOfGroceryItems={this.state.fridgeInventory} deleteGroceryItem={this.deleteGroceryItem} updateInventory={this.updateInventory}/>
         </ul>
         <Form addGroceryToDatabase={this.addGroceryToDatabase} />

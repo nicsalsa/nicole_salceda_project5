@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import './GroceryItem.css';
 
 class GroceryItem extends Component {
    render(){
       // console.log(this.props.listOfGroceryItems);
       return (
-         <li>
-            <h2 className="fridgeInventory">What's in my fridge?</h2>
+         <Fragment>
+            
             {this.props.listOfGroceryItems.map((groceryItem, category) => {
                return (
-                  <div className="groceryItem" key={groceryItem.key} >
+                  <li className={groceryItem.category} key={groceryItem.key} >
                      <h3>{groceryItem.groceryItem}</h3>
-                     <p>category: {groceryItem.category}</p>
-                     <p>inventory: {groceryItem.inventory}</p>
+                     <p>Category: {groceryItem.category}</p>
+                     <p>Inventory: {groceryItem.inventory}</p>
                      <button onClick={() => this.props.deleteGroceryItem(groceryItem.key)}>
                         <i className="fas fa-trash-alt"></i>
                      </button>
@@ -21,10 +22,10 @@ class GroceryItem extends Component {
                      <button onClick={() => this.props.updateInventory(groceryItem.key, 1)}>
                         <i className="fas fa-plus"></i>
                      </button>
-                  </div>
+                  </li>
                )
             })}
-         </li>
+         </Fragment>
       );
    }
 }
