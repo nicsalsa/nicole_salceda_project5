@@ -1,0 +1,113 @@
+@import '../../App.scss';
+a {
+   width: 100%;
+   text-decoration: none;
+   color: darkslategray;
+   font-weight: bold;
+   background: lightseagreen;
+   border-radius: 5px;
+   box-shadow: 1px 1px 2px darkslategray;
+   padding: 2rem;
+   cursor: pointer;
+   @include breakPoint(break0){
+      font-size: 2rem;
+      cursor:pointer;
+   }
+   @include breakPoint(break5){
+      font-size: 1.5rem;
+   }
+   @include breakPoint(break5){
+      font-size: 1.2rem;
+   }
+   @include breakPoint(break6){
+      font-size: 1rem;
+      padding: 1rem;
+   }
+}
+
+header {
+   height: 100vh;
+   position: relative;
+   @include breakPoint(break0){
+      background: url(../../assets/mike-dornerBanana.jpg) center fixed;
+      background-size: cover;
+   }
+   @include breakPoint(break6){
+      background: url(../../assets/tim-foster-Banana.jpg) no-repeat fixed;
+      background-size: cover;
+      
+   }
+   h1 {
+      position: absolute;
+      font-family: 'Fjalla One', sans-serif;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px #1689a7;
+      padding: 2rem 0 0 2rem;
+      @include breakPoint(break0){
+         font-size: 8rem;
+         top: 18%;
+      }
+      @include breakPoint(break6){
+         font-size: 3rem;
+         top: 10%;
+      }
+   }
+}
+
+
+nav {
+   margin: 0 auto;
+   .navContainer{
+      width: 100%;
+      margin: 0 auto;
+      height: 90vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-end;
+      @include breakPoint(break0){
+         justify-content: center;
+         
+      }
+      .navLink {
+         // width: 100%;
+         text-align: center;
+         position: absolute;
+         @include breakPoint(break0){
+            width: 60%;
+         }
+         @include breakPoint(break3){
+            width: 40%;
+         }
+         @include breakPoint(break5){
+            width: 30%;
+         }
+         @include breakPoint(break5){
+            width: 40%;
+         }
+         @include breakPoint(break5){
+            width: 35%;
+         }
+      }
+      .navLink.left {
+         left: 2rem;
+      }
+      .navLink.right {
+         right: 2rem;
+         .hidden {
+            display: none;
+         }
+        
+      }
+   }
+}
+
+.display {
+   padding: 6rem 0;
+   position: relative;
+   .toBuyList {
+      background: lightgrey;
+      padding: 2rem;
+      text-transform: capitalize;
+   }
+}

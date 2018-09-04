@@ -1,28 +1,73 @@
-li {
-   font-size: 2rem;
-   margin: 1rem;
-   width: 200px;
-   height: 200px;
+@import '../../App.scss';
+
+// GROCERY ITEM STYLES
+.fridgeList {
+   background: url(../../assets/erol-ahmed-399674-unsplash.jpg);
+   background-size: cover;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   flex-wrap: wrap;
+   padding: 28rem 0;
+}
+.fridgeItem {
+   font-size: 1rem;
+   flex-basis: 1 0 15rem;
+   margin: 0.5rem;
+   width: 11rem;
+   // height: 10rem;
    border-radius: 5px;
+   background: lightseagreen;
+   @include breakPoint(break0){
+         font-size: 1.2rem;
+         width: 15rem;
+         height: 15rem;
+         margin: 1rem;
+   }
+   @include breakPoint(break6){
+         font-size: 1rem;
+         width: 11rem;
+         height: 11rem;
+         margin: 0.5rem;
+      }
+   
+      .fridgeItemWrapper {
+         padding: 0.5rem;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         height: 100%;
+         @include breakPoint(break6){
+            width: 95%;
+         }
+      .itemText {
+         position:relative;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+         .trashCan {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            &:hover {
+               background: tomato;
+            }
+            @include breakPoint(break0){
+               top: -10px;
+               right: -10px;
+            }
+
+         }
+      }
+   }
 }
-.Grains {
-   background: palegoldenrod;
+.inventoryAddMinus button, .itemText button {
+   background: transparent;
+   border: solid 1px mintcream;
+   border-radius: 10px; 
+   margin: 2px;
+   text-align: center;
 }
-.Veggie {
-   background: lightgreen;
-}
-.Fruit {
-   background:rebeccapurple;
-}
-.Meat {
-   background: tomato;
-}
-.Dairy {
-   background: lightblue;
-}
-.Freezer {
-   background: cadetblue;
-}
-.Other {
-   background: grey;
-}
+

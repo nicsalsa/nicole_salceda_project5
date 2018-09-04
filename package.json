@@ -18,7 +18,8 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
     "react-router-dom": "^4.3.1"

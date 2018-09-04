@@ -1,27 +1,49 @@
 import React, { Component, Fragment } from 'react';
 import './GroceryItem.css';
+import classNames from 'classnames';
+
 
 class GroceryItem extends Component {
+   constructor(){
+      super();
+      this.state = ({
+         fruitArray: [],
+         veggieArray: [],
+         dairyArray: [],
+         grainArray: [],
+         meatArray: [],
+         freezerArray: [],
+         otherArray: []
+      })
+   }
+
    render(){
-      // console.log(this.props.listOfGroceryItems);
       return (
          <Fragment>
-            
             {this.props.listOfGroceryItems.map((groceryItem, category) => {
                return (
-                  <li className={groceryItem.category} key={groceryItem.key} >
-                     <h3>{groceryItem.groceryItem}</h3>
-                     <p>Category: {groceryItem.category}</p>
-                     <p>Inventory: {groceryItem.inventory}</p>
-                     <button onClick={() => this.props.deleteGroceryItem(groceryItem.key)}>
-                        <i className="fas fa-trash-alt"></i>
-                     </button>
-                     <button onClick={() => this.props.updateInventory(groceryItem.key, -1)}>
-                        <i className="fas fa-minus"></i>
-                     </button>
-                     <button onClick={() => this.props.updateInventory(groceryItem.key, 1)}>
-                        <i className="fas fa-plus"></i>
-                     </button>
+                  <li className={classNames(groceryItem.category, 'fridgeItem')} key={groceryItem.key}>
+                     <div className="fridgeItemWrapper wrapper">
+                        <div className="itemText">
+                           <h3>{groceryItem.groceryItem}</h3>
+                           <p>Category: {groceryItem.category}</p>
+                           <p>Inventory: {groceryItem.inventory}</p>
+                           <button className="trashCan" onClick={() => this.props.deleteGroceryItem(groceryItem.key)}>
+                              <i className="fas fa-trash-alt"></i>
+                           </button>
+                        </div>
+                        <div className="inventoryAddMinus">
+                           <button onClick={() => this.props.updateInventory(groceryItem.key, -1)} disabled={groceryItem.inventory > 0 ? false : true}>
+                              <i className="fas fa-minus"></i>
+                           </button>
+                           <button onClick={() => this.props.updateInventory(groceryItem.key, 1)}>
+                              <i className="fas fa-plus"></i>
+                           </button>
+                        </div>
+                        <button onClick={() => this.props.displayCart(groceryItem.key)}>
+                           Add to <i className="fas fa-cart-plus"></i>
+                        </button>
+                     </div>
                   </li>
                )
             })}
@@ -29,42 +51,5 @@ class GroceryItem extends Component {
       );
    }
 }
-
-
-// const BookList = (props) => {
-//    console.log(props);
-//    return (
-//       <section className="booklist">
-//          <h2>My Books</h2>
-//          {props.listOfBooks.map((book) => {
-//             return (
-//                <div className="book" key={book.key}>
-//                   <h3>{book.bookTitle}</h3>
-//                   <p>{`by ${book.bookAuthor}`}</p>
-//                   <button onClick={() => props.deleteBook(book.key)} id={book.key}>Delete Book</button>
-//                </div>
-//             )
-//          })}
-
-//       </section>
-//    )
-// }
-
-// class Donut extends Component {
-//    render() {
-//       return (
-//          <div>
-//             <h2>{this.props.donutName}</h2>
-//             <p>{this.props.inventory}</p>
-//             <button
-//                id={this.props.inventoryLocation}
-//                onClick={this.props.updateInventory}
-//                disabled={this.props.inventory ? false : true} >
-//                Order a Donut
-//                </button>
-//          </div>
-//       )
-//    }
-// }
 
 export default GroceryItem;

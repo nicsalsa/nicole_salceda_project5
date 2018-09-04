@@ -4,6 +4,44 @@
 
     font-family: 'Noto Sans', sans-serif;
  */
-form {
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 2rem; }
+form, .toBuyList {
+  background: paleturquoise;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px grey;
+  padding: 10px;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  width: 98%;
+  z-index: 10; }
+
+input {
+  border: none;
+  border-bottom: solid black 1px;
+  padding: 1rem 0;
+  margin: 5px 0;
+  background: transparent; }
+
+.input {
+  display: flex;
+  flex-direction: column; }
+
+input[type=submit] {
+  margin: 5px auto;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 2px;
+  padding: 10px;
+  background: palegoldenrod;
+  border: solid 1px tomato;
+  border-radius: 5px; }
+
+select {
+  padding: 10px;
+  color: grey;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  letter-spacing: 0.5px; }

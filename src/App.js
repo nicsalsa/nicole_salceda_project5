@@ -1,40 +1,46 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import firebase from './firebase';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import classNames from 'classnames';
 
 //Components
-import Form from './components/form/Form';
+import Header from './components/header/Header';
 import GroceryItem from './components/groceryItems/GroceryItem';
-
+// Global Variables
 const dbRef = firebase.database().ref();
-
+const newState = [];
+// Class based component begins
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      fridgeInventory: []
+      fridgeInventory: [],
+      toBuyList: [],
+      toDos: []
     }
   }
   componentDidMount() {
     dbRef.on('value', (snapshot) => {
-      // console.log(snapshot.val());
       const data = snapshot.val();
       this.sortGroceryItems(data);
-      const newState = [];
+
       for (let key in data) {
         newState.push({ key: key, name: data[key] });
-        console.log(newState)
+        // console.log(newState)
       }
-  
-  })
-}
+    })
+  }
   addGroceryToDatabase = (grocery, category, inventory) => {
     dbRef.push({
       groceryItem: grocery,
       category: category,
       inventory: inventory
     })
-    // console.log(book, author);
   }
   sortGroceryItems = (groceryItemObject) => {
     if (groceryItemObject === null)  {
@@ -67,19 +73,49 @@ class App extends Component {
       inventoryNum = snapshot.val();
     })
     grocerydbRef.update({inventory: inventoryNum + number});
+    if(inventoryNum <= 0){
+      this.displayCart(id);
+    }
   }
+
+  displayCart = (id) => {
+    let groceryItemName;
+    const listArray = this.state.toBuyList;
+    const grocerydbRef = firebase.database().ref(`${id}`);
+    grocerydbRef.child('/groceryItem').on('value', (snapshot) => {
+        groceryItemName = snapshot.val();
+        listArray.push(groceryItemName);
+      })
+      this.setState({
+        toBuyList: listArray
+    })
+  }
+  
   render(){
-    // console.log('render was called')
     return (
-      <div className="App">
-        <h1>Grocery List App</h1>
-        <ul className="fridgeList">
-          <GroceryItem listOfGroceryItems={this.state.fridgeInventory} deleteGroceryItem={this.deleteGroceryItem} updateInventory={this.updateInventory}/>
-        </ul>
-        <Form addGroceryToDatabase={this.addGroceryToDatabase} />
-      </div>
+      <Fragment>
+        <div className="App">
+          <Header toBuyList={this.state.toBuyList} addGroceryToDatabase={this.addGroceryToDatabase}/>
+          {/* <section className="toBuy">
+            <ul>
+              <ToBuy toBuyList={this.state.toBuyList} />
+            </ul>
+          </section> */}
+          <ul className="fridgeList">
+            <GroceryItem listOfGroceryItems={this.state.fridgeInventory} deleteGroceryItem={this.deleteGroceryItem} updateInventory={this.updateInventory} displayCart={this.displayCart}/>
+          </ul>
+          
+          {/* <Link to="/Form">Add New Grocery Item</Link>
+          <Route path="/Form" render={() => <Form addGroceryToDatabase={this.addGroceryToDatabase} />} /> */}
+
+        </div>
+      </Fragment>
     );
   }
 }
 
 export default App;
+
+
+{/* <Route path="/contact" component={Contact} />
+  <Form addGroceryToDatabase={this.addGroceryToDatabase} /> */}
