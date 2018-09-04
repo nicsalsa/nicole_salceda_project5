@@ -26,7 +26,7 @@ class GroceryItem extends Component {
                               <i className="fas fa-plus"></i>
                            </button>
                         </div>
-                        <button onClick={() => this.props.displayCart(groceryItem.key)}>
+                        <button className="addToList" onClick={() => this.props.displayCart(groceryItem.key)}>
                            Add to <i className="fas fa-cart-plus"></i>
                         </button>
                      </div>

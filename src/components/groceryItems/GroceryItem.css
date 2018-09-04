@@ -135,7 +135,9 @@ html {
   font-size: 62.5%; }
 
 body {
-  background: mintcream; }
+  background: mintcream;
+  max-width: 1280px;
+  margin: 0 auto; }
 
 body, h1, h2, h3, p, li, ul {
   padding: 0;
@@ -163,13 +165,14 @@ h3 {
   padding: 28rem 0; }
 
 .fridgeItem {
-  font-size: 1rem;
+  font-size: 1.5rem;
   flex-basis: 1 0 15rem;
   margin: 0.5rem;
-  width: 11rem;
+  width: 16rem;
+  height: 16rem;
   border-radius: 5px;
   background: lightseagreen; }
-  @media (max-width: 1280px) {
+  @media (min-width: 1280px) {
     .fridgeItem {
       font-size: 1.2rem;
       width: 15rem;
@@ -203,14 +206,30 @@ h3 {
         right: -20px; }
         .fridgeItem .fridgeItemWrapper .itemText .trashCan:hover {
           background: tomato; }
-        @media (max-width: 1280px) {
+        @media (min-width: 1280px) {
           .fridgeItem .fridgeItemWrapper .itemText .trashCan {
             top: -10px;
             right: -10px; } }
 
 .inventoryAddMinus button, .itemText button {
   background: transparent;
-  border: solid 1px mintcream;
+  border: solid 1px transparent;
   border-radius: 10px;
   margin: 2px;
   text-align: center; }
+
+.inventoryAddMinus button:first-child {
+  background: tomato;
+  color: white; }
+
+.inventoryAddMinus button:last-child {
+  background: lightgreen;
+  color: white; }
+
+.addToList {
+  background: #fae126;
+  border: solid 1px grey;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px grey; }
+  .addToList:hover {
+    background: lightgreen; }

@@ -11,10 +11,11 @@
    padding: 28rem 0;
 }
 .fridgeItem {
-   font-size: 1rem;
+   font-size: 1.5rem;
    flex-basis: 1 0 15rem;
    margin: 0.5rem;
-   width: 11rem;
+   width: 16rem;
+   height: 16rem;
    border-radius: 5px;
    background: lightseagreen;
    @include breakPoint(break0){
@@ -64,9 +65,26 @@
 }
 .inventoryAddMinus button, .itemText button {
    background: transparent;
-   border: solid 1px mintcream;
+   border: solid 1px transparent;
    border-radius: 10px; 
    margin: 2px;
    text-align: center;
+}
+.inventoryAddMinus button:first-child {
+      background: tomato;
+      color: white;
+}
+.inventoryAddMinus button:last-child {
+      background: lightgreen;
+      color: white;
+}
+.addToList {
+      background: #fae126;
+      border: solid 1px grey;
+      border-radius: 5px;
+      box-shadow: 1px 1px 1px grey;
+      &:hover {
+            background: lightgreen;
+      }
 }
 

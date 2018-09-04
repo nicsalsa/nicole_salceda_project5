@@ -29,18 +29,14 @@ class Header extends Component {
                      <h1>The Food Locker</h1>
                      <nav>
                         <ul className="navContainer">
-                        
                            <li className="navLink left">
-                              <Link to="/Form">New Grocery Item</Link>
-                              
+                              <Link to="/Form"><li>New Grocery Item</li></Link>
                            </li>
                            <li className="navLink middle">
-                              <Link to="/">Clear</Link>
-                              
+                              <Link to="/"><li>Clear</li></Link>        
                            </li>
                            <li className="navLink right">
-                              <Link to="/ToBuy">View Grocery List</Link>
-                              
+                              <Link to="/ToBuy"><li>View Grocery List</li></Link>
                            </li>
                         </ul>
                         <section className="display">
