@@ -28,10 +28,8 @@ class App extends Component {
     dbRef.on('value', (snapshot) => {
       const data = snapshot.val();
       this.sortGroceryItems(data);
-
       for (let key in data) {
         newState.push({ key: key, name: data[key] });
-        // console.log(newState)
       }
     })
   }
@@ -46,8 +44,7 @@ class App extends Component {
     if (groceryItemObject === null)  {
       groceryItemObject = {};
     }
-    // we need to transform our object into an array to easily map through it.
-    // object.entries is an object method that turns an object into an array of arrays
+   
     const groceriesArrays = Object.entries(groceryItemObject)
       .map((item) => {
         return ({
@@ -90,24 +87,15 @@ class App extends Component {
         toBuyList: listArray
     })
   }
-  
+
   render(){
     return (
       <Fragment>
         <div className="App">
           <Header toBuyList={this.state.toBuyList} addGroceryToDatabase={this.addGroceryToDatabase}/>
-          {/* <section className="toBuy">
-            <ul>
-              <ToBuy toBuyList={this.state.toBuyList} />
-            </ul>
-          </section> */}
           <ul className="fridgeList">
             <GroceryItem listOfGroceryItems={this.state.fridgeInventory} deleteGroceryItem={this.deleteGroceryItem} updateInventory={this.updateInventory} displayCart={this.displayCart}/>
           </ul>
-          
-          {/* <Link to="/Form">Add New Grocery Item</Link>
-          <Route path="/Form" render={() => <Form addGroceryToDatabase={this.addGroceryToDatabase} />} /> */}
-
         </div>
       </Fragment>
     );
@@ -116,6 +104,3 @@ class App extends Component {
 
 export default App;
 
-
-{/* <Route path="/contact" component={Contact} />
-  <Form addGroceryToDatabase={this.addGroceryToDatabase} /> */}

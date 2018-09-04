@@ -17,7 +17,6 @@ class Header extends Component {
       })
    }
    handleAlert = (e) => {
-      
       this.setState({
          isHidden: !this.state.isComplete
       })
@@ -55,8 +54,6 @@ class Header extends Component {
                   </div>
                </header>
          </Router>
-
-         
       )
    }
 }

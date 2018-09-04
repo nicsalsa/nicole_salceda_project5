@@ -2,21 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './GroceryItem.css';
 import classNames from 'classnames';
 
-
 class GroceryItem extends Component {
-   constructor(){
-      super();
-      this.state = ({
-         fruitArray: [],
-         veggieArray: [],
-         dairyArray: [],
-         grainArray: [],
-         meatArray: [],
-         freezerArray: [],
-         otherArray: []
-      })
-   }
-
    render(){
       return (
          <Fragment>

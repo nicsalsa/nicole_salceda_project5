@@ -1,9 +1,4 @@
-/* FONT FAMILY */
-/* 
-    font-family: 'Fjalla One', sans-serif;
-
-    font-family: 'Noto Sans', sans-serif;
- */
+// FORM STYLES
 form, .toBuyList {
    background: paleturquoise;
    border-radius: 5px;
@@ -25,7 +20,6 @@ input {
 .input {
     display: flex;
     flex-direction: column;
-   
 }
 input[type=submit] {
     margin: 5px auto;
@@ -47,3 +41,4 @@ select {
   background: transparent;
   letter-spacing: 0.5px;
 }
+// END OF FORM STYLES
