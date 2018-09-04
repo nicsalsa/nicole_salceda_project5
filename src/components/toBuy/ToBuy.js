@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import './ToBuy.css';
 import classNames from 'classnames';
 
 
